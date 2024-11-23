@@ -1,0 +1,20 @@
+{% extends "leave/base.html" %}
+
+{% block content %}
+<h1>Apply for Leave</h1>
+
+{% if messages %}
+    <div>
+        {% for message in messages %}
+        <div class="alert {{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<a href="{% url 'leave_status' %}">View Leave Status</a>
+{% endblock %}
