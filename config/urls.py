@@ -23,7 +23,7 @@ from django.urls import (
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("admin/", admin.site.urls),
     path("leave/", include("leave.urls")),
     path("", lambda request: redirect("leave/status")),
 ]

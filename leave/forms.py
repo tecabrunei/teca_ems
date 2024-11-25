@@ -9,16 +9,16 @@ class LeaveApplicationForm(forms.ModelForm):
         model = LeaveApplication
         fields = ["start_date", "end_date", "reason"]
         widgets = {
-            'start_date': forms.TextInput(attrs={'class': 'form-control datepicker'}),
-            'end_date': forms.TextInput(attrs={'class': 'form-control datepicker'}),
-            'reason': forms.Textarea(attrs={'class': 'form-control'}),
+            "start_date": forms.TextInput(attrs={"class": "form-control datepicker"}),
+            "end_date": forms.TextInput(attrs={"class": "form-control datepicker"}),
+            "reason": forms.Textarea(attrs={"class": "form-control"}),
         }
 
     def clean(self):
         cleaned_data = super().clean()
-        start_date = cleaned_data.get('start_date')
-        end_date = cleaned_data.get('end_date')
+        start_date = cleaned_data.get("start_date")
+        end_date = cleaned_data.get("end_date")
 
         if start_date and end_date and start_date > end_date:
-            raise ValidationError('The start date cannot be after the end date.')
+            raise ValidationError("The start date cannot be after the end date.")
         return cleaned_data
